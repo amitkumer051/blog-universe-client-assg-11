@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/firebase": "^3.2.1",
+    "@types/react-icons": "^3.0.0",
+    "firebase": "^10.5.2",
     "flowbite-react": "^0.6.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
     "react-router-dom": "^6.18.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.9.0"
