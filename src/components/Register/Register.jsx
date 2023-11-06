@@ -1,7 +1,11 @@
 import { Button, Label, TextInput } from 'flowbite-react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-
+    const { registerUser } = useContext(AuthContext)
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -9,10 +13,33 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = {name,photo,email,password};
+        const user = { name, photo, email, password };
         console.log(user);
-    }
 
+        if (password.length < 6) {
+            Swal.fire('Password should be at least 6 Characters')
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            Swal.fire('Your Password need one Upper Case Characters.')
+            return;
+        }
+        else if (!/[#$%&?]/.test(password)) {
+            Swal.fire('Your Password need one Special Characters.')
+            return;
+        }
+
+        registerUser(email, password, name, photo)
+            .then(result => {
+                console.log(result.user);
+                Swal.fire('Registration Successfull')
+                form.reset();
+            })
+            .then(error => {
+                console.log(error);
+                return Swal.fire(error.message);
+            })
+    }
     return (
         <div className='m-10'>
             <form onSubmit={handleRegister} className="flex max-w-xl  rounded-xl mx-auto p-10 bg-red-100 flex-col gap-4">
@@ -41,7 +68,10 @@ const Register = () => {
                     </div>
                     <TextInput id="password2" type="password" name='password' placeholder="password" required shadow />
                 </div>
-                <Button gradientDuoTone="greenToBlue" type="submit">Register new account</Button>
+                <Button gradientDuoTone="purpleToBlue" type="submit">Register new account</Button>
+                <div className="text-center">
+                    <h2>Already have an account? Please <Link to='/login'><span className="text-blue-700 font-semibold underline">Login</span></Link></h2>
+                </div>
             </form>
         </div>
     );
