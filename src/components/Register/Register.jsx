@@ -43,7 +43,7 @@ const Register = () => {
     return (
         <div className='m-10'>
             <form onSubmit={handleRegister} className="flex max-w-xl  rounded-xl mx-auto p-10 bg-red-100 flex-col gap-4">
-                <h2 className='text-center font-bold text-3xl'>Please Register</h2>
+                <h2 className=' text-amber-600 text-center font-bold text-3xl'>Please Register</h2>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="Name" value="Name" />
