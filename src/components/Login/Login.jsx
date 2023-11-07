@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { AiFillGoogleCircle } from 'react-icons/ai';
+
 
 const Login = () => {
     const { loginUser,signInWithGoogle } = useContext(AuthContext);
@@ -26,14 +28,14 @@ const Login = () => {
             })
             .then(error => {
                 console.log(error);
-                Swal.fire(error.message)
+                Swal.fire(error?.message)
                 form.reset();
             })
     }
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result.user);
+                console.log(result?.user);
             })
             .catch(error => console.error(error))
     }
@@ -59,7 +61,7 @@ const Login = () => {
                     <h2>Do not have an account? Please <Link to='/register'><span className="text-blue-700 font-semibold underline">Register</span></Link></h2>
                 </div>
                 <div className='mx-auto'>
-                    <Button  onClick={handleGoogleSignIn} gradientMonochrome="purple">Sign In with Google</Button>
+                    <Button  onClick={handleGoogleSignIn} gradientMonochrome="purple"><AiFillGoogleCircle className='text-2xl mr-1'></AiFillGoogleCircle>Sign In with Google</Button>
                 </div>
             </form>
         </div>

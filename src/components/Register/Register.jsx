@@ -9,11 +9,11 @@ const Register = () => {
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        const displayName = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, photo, email, password };
+        const user = { displayName, photo, email, password };
         console.log(user);
 
         if (password.length < 6) {
@@ -29,7 +29,7 @@ const Register = () => {
             return;
         }
 
-        registerUser(email, password, name, photo)
+        registerUser(email, password, displayName, photo)
             .then(result => {
                 console.log(result.user);
                 Swal.fire('Registration Successfull')
