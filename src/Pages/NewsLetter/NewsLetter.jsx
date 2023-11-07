@@ -22,7 +22,7 @@ const NewsLetter = () => {
                     </div>
                     <TextInput id="email" type="email" name='email' placeholder="example@gmail.com" required shadow />
                 </div>
-                <Button gradientDuoTone="greenToBlue" type="submit">Submit</Button>
+                <Button gradientDuoTone="tealToLime" type="submit">Submit</Button>
             </form>
         </div>
     );

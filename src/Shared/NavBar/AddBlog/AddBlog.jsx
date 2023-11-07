@@ -11,10 +11,11 @@ const AddBlog = () => {
         const title = form.title.value;
         const photo = form.photo.value;
         const category = form.category.value;
+        const userEmail = user?.email;
         const shortDes = form.shortDes.value;
         const longDes = form.longDes.value;
 
-        const blog = { title, photo, category, shortDes, longDes,}
+        const blog = { title, photo, category, shortDes, longDes,userEmail}
         console.log(blog);
 
         fetch('http://localhost:5000/addBlog', {
@@ -86,7 +87,7 @@ const AddBlog = () => {
                         </div>
                     </div>
                 </div>
-                <Button gradientDuoTone="cyanToBlue" type="submit">Submit</Button>
+                <Button gradientDuoTone="tealToLime" type="submit">Submit</Button>
             </form>
         </div>
     );

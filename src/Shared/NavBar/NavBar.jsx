@@ -16,9 +16,9 @@ const NavBar = () => {
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/addBlog'>Add Blog</Link></li>
-        <li><Link to='/allBlogs'>All Blogs</Link></li>
+        <li><Link to='/allBlog'>All Blogs</Link></li>
         <li><Link to='/featuredBlog'>Featured Blog</Link></li>
-        <li><Link to='/wishlist'>Wishlist</Link></li>
+        <li><Link to='/wishList'>Wishlist</Link></li>
     </>
     return (
         <div>
