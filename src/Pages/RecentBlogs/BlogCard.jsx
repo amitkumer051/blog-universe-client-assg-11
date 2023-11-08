@@ -3,8 +3,9 @@ import { Button, Card } from 'flowbite-react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
-const BlogCard = ({ blog, }) => {
+const BlogCard = ({ blog }) => {
     const { _id, title, photo, category, shortDes, createdAt } = blog;
 
     const { user } = useContext(AuthContext);
@@ -19,6 +20,26 @@ const BlogCard = ({ blog, }) => {
         const blogInfo = {userEmail, photo, title, category, shortDes};
         console.log(blogInfo);
 
+        fetch('http://localhost:5000/wishList', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(blogInfo)
+        })
+            .then(result => result.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Blog Added in Wish List",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
     return (
         <div className='mx-auto justify-center'>

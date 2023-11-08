@@ -11,7 +11,8 @@ const AllBlogs = () => {
     }, [])
     return (
         <div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 my-6">
+            <h2 className='text-2xl font-bold text-amber-600 text-center my-6'>All Blogs</h2>
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                 {
                     allBlogs?.map(allBlog => <AllBlogCard key={allBlog._id} allBlog={allBlog}></AllBlogCard>)
                 }

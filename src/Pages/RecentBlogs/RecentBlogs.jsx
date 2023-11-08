@@ -7,7 +7,10 @@ const FeaturedBlogs = () => {
     useEffect(() => {
         fetch('http://localhost:5000/addBlog')
             .then(res => res.json())
-            .then(data => setBlogs(data))
+            .then(data => {
+                const silceData = data.slice(0,6);
+                setBlogs(silceData)
+            })
     }, [setBlogs])
     return (
         <div>
