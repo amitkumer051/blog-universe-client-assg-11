@@ -8,6 +8,7 @@ import ErrorPage from "../components/ErrorPAge/ErrorPage";
 import AllBlogs from "../components/AllBlogs/AllBlogs";
 import FeaturedBlog from "../components/FeaturedBlog/FeaturedBlog";
 import WishList from "../components/WishList/WishList";
+import ViewDetails from "../Pages/RecentBlogs/ViewDetails";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '/viewDetails/:id',
+        element: <ViewDetails></ViewDetails>,
+        loader: () => fetch('http://localhost:5000/addBlog')
+    }
 ]);
 
 export default router;

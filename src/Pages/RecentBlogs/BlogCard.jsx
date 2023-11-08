@@ -1,8 +1,25 @@
 /* eslint-disable react/prop-types */
 import { Button, Card } from 'flowbite-react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
-const BlogCard = ({ blog }) => {
-    const { title, photo, category, shortDes,createdAt } = blog;
+const BlogCard = ({ blog, }) => {
+    const { _id, title, photo, category, shortDes, createdAt } = blog;
+
+    const { user } = useContext(AuthContext);
+    const handleWishList = e => {
+        e.preventDefault();
+        const userEmail = user?.email;
+        const photo = blog?.photo;
+        const title = blog?.title;
+        const category = blog?.category;
+        const shortDes = blog?.shortDes;
+
+        const blogInfo = {userEmail, photo, title, category, shortDes};
+        console.log(blogInfo);
+
+    }
     return (
         <div className='mx-auto justify-center'>
             <Card className="max-w-sm h-[520px]" >
@@ -18,8 +35,8 @@ const BlogCard = ({ blog }) => {
                     {shortDes}
                 </p>
                 <div className='flex justify-between'>
-                    <Button gradientMonochrome="info">Details</Button>
-                    <Button outline gradientDuoTone="greenToBlue">Wish List</Button>
+                    <Link to={`/viewDetails/${_id}`}> <Button gradientMonochrome="info">Details</Button></Link>
+                    <Button onClick={handleWishList} outline gradientDuoTone="greenToBlue">Wish List</Button>
                 </div>
             </Card>
         </div>
