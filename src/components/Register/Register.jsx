@@ -5,15 +5,15 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { registerUser } = useContext(AuthContext)
+    const { registerUser, handleUpdate } = useContext(AuthContext)
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
-        const displayName = form.name.value;
+        const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { displayName, photo, email, password };
+        const user = { name, photo, email, password };
         console.log(user);
 
         if (password.length < 6) {
@@ -29,9 +29,15 @@ const Register = () => {
             return;
         }
 
-        registerUser(email, password, displayName, photo)
+        registerUser(email, password)
             .then(result => {
-                console.log(result.user);
+                const user = result.user;
+                console.log(user);
+                handleUpdate(name, photo)
+                    .then(res => {
+                        const user = res.user;
+                        console.log(user);
+                    })
                 Swal.fire('Registration Successfull')
                 form.reset();
             })

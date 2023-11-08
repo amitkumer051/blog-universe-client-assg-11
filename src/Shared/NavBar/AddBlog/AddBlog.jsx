@@ -4,7 +4,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 const AddBlog = () => {
-    const {user}=useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    console.log(user);
     const handleAddBlog = e => {
         e.preventDefault();
         const form = e.target;
@@ -15,7 +16,9 @@ const AddBlog = () => {
         const shortDes = form.shortDes.value;
         const longDes = form.longDes.value;
 
-        const blog = { title, photo, category, shortDes, longDes,userEmail}
+        const createdAt = user?.metadata?.creationTime;
+        console.log(createdAt);
+        const blog = { title, photo, category, shortDes, longDes,userEmail,createdAt }
         console.log(blog);
 
         fetch('http://localhost:5000/addBlog', {
@@ -25,7 +28,7 @@ const AddBlog = () => {
             },
             body: JSON.stringify(blog)
         })
-            .then(res => res.json())
+            .then(result => result.json())
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
@@ -36,6 +39,7 @@ const AddBlog = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    form.reset();
                 }
             })
 
@@ -61,7 +65,7 @@ const AddBlog = () => {
                         <div>
                             <div className="mb-2 block py-3 ">
                                 <Label htmlFor="Category" value="Blog Category" />
-                                <select className='rounded-lg ml-14' name="category">
+                                <select className='rounded-lg ml-4' name="category">
                                     <option name="category" value="Travel">Travel</option>
                                     <option name="category" value="Education">Education</option>
                                     <option name="category" value="Technology">Technology</option>

@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -28,20 +28,20 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path:'/addBlog',
-                element:<AddBlog></AddBlog>
+                path: '/addBlog',
+                element: <AddBlog></AddBlog>
             },
             {
-                path:'/allBlog',
-                element:<AllBlogs></AllBlogs>
+                path: '/allBlog',
+                element: <AllBlogs></AllBlogs>
             },
             {
-                path:'/featuredBlog',
-                element:<FeaturedBlog></FeaturedBlog>
+                path: '/featuredBlog',
+                element: <FeaturedBlog></FeaturedBlog>
             },
             {
-                path:'/wishList',
-                element:<WishList></WishList>
+                path: '/wishList',
+                element: <WishList></WishList>
             }
         ]
     },
