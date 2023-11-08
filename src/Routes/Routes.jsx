@@ -49,12 +49,12 @@ const router = createBrowserRouter([
     {
         path: '/viewDetails/:id',
         element: <ViewDetails></ViewDetails>,
-        loader: () => fetch('http://localhost:5000/addBlog')
+        loader: () => fetch('https://blog-universe-server-assg-11.vercel.app/addBlog')
     },
     {
         path:'/wistListDetails/:id',
         element:<WishListDetails></WishListDetails>,
-        loader:()=> fetch('http://localhost:5000/wishList')
+        loader:()=> fetch('https://blog-universe-server-assg-11.vercel.app/wishList')
     }
 ]);
 

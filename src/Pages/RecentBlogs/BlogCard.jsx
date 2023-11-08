@@ -20,7 +20,7 @@ const BlogCard = ({ blog }) => {
         const blogInfo = {userEmail, photo, title, category, shortDes};
         console.log(blogInfo);
 
-        fetch('http://localhost:5000/wishList', {
+        fetch('https://blog-universe-server-assg-11.vercel.app/wishList', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

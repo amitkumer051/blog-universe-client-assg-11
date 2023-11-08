@@ -5,7 +5,7 @@ import AllBlogCard from "./AllBlogCard";
 const AllBlogs = () => {
     const [allBlogs, setAllBlogs] = useState();
     useEffect(() => {
-        fetch('http://localhost:5000/addBlog')
+        fetch('https://blog-universe-server-assg-11.vercel.app/addBlog')
             .then(res => res.json())
             .then(data => setAllBlogs(data))
     }, [])

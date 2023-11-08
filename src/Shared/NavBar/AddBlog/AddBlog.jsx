@@ -21,7 +21,7 @@ const AddBlog = () => {
         const blog = { title, photo, category, shortDes, longDes,userEmail,createdAt }
         console.log(blog);
 
-        fetch('http://localhost:5000/addBlog', {
+        fetch('https://blog-universe-server-assg-11.vercel.app/addBlog', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

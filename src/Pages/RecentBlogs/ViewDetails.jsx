@@ -3,7 +3,6 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { Button } from 'flowbite-react';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 
-
 const ViewDetails = () => {
     const blogs = useLoaderData();
     const { id } = useParams();

@@ -10,7 +10,7 @@ const WishList = () => {
 
     const individualdWishList = wishLists?.filter(wishlist => wishlist?.userEmail == currentUser)
     useEffect(() => {
-        fetch('http://localhost:5000/wishList')
+        fetch('https://blog-universe-server-assg-11.vercel.app/wishList')
             .then(res => res.json())
             .then(data => setWishList(data))
     }, [])
